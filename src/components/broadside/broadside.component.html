@@ -1,0 +1,12 @@
+<section class="broad-content">
+  <img src="assets/imgs/icon/u12.svg" alt="" (click)="showMask('tel')" (mouseenter)="showTooltip('tel')"
+    (mouseleave)="hideTooltip()">
+  <img src="assets/imgs/icon/qq.svg" alt="" (click)="showMask('qq')" (mouseenter)="showTooltip('qq')"
+    (mouseleave)="hideTooltip()">
+  <img src="assets/imgs/icon/wechat.svg" alt="" (click)="showMask('wechat')" (mouseenter)="showTooltip('wechat')"
+    (mouseleave)="hideTooltip()">
+  <img src="assets/imgs/icon/facebook.svg" alt="" (click)="showMask('facebook')" (mouseenter)="showTooltip('facebook')"
+    (mouseleave)="hideTooltip()">
+  <app-pop [inputType]="inputType" [isShowMask]="isShowMask"></app-pop>
+</section>
+<div class="wraper wraper-side" [hidden]="!isShowMask" (click)="hideMask()"></div>

@@ -1,0 +1,29 @@
+.broad-content {
+  position: fixed;
+  right: 2vw;
+  top: calc(50vh - 17vw);
+  height: 34vw;
+  width: 8vw;
+  border: 1px #ccc solid;
+  border-radius: 2vw;
+  max-width: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 352px;
+  justify-content: space-between;
+  padding: 2vw 0 0;
+  z-index: 99;
+  background: #fff;
+  img {
+    height: 6vw;
+    width: 6vw;
+    max-height: 48px;
+    max-width: 48px;
+    margin-bottom: 2vw;
+  }
+}
+
+.wraper-side {
+  background-color: rgba(0, 0, 0, 0);
+}

@@ -1,0 +1,21 @@
+<div class="pop-content" [hidden]="inputType=='null'">
+  <section class="tel" *ngIf="inputType=='tel'">
+    <span>咨询热线</span>
+    <span *ngFor="let item of ymkjData?.tel">{{item}}</span>
+  </section>
+  <section class="qq" *ngIf="inputType=='qq'">
+    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={{ymkjData?.qq}}&site=qq&menu=yes">
+      <img src="assets/imgs/icon/qq.svg" alt="点击这里与我交谈" title="点击这里与我交谈" class="qq-icon" />
+      QQ交谈
+    </a>
+    <span>{{ymkjData?.qq}}</span>
+  </section>
+  <section class="wechat" *ngIf="inputType=='wechat'">
+    <img src="{{ymkjData?.wechatImg}}" alt="">
+    <span>官方微信自助客服</span>
+  </section>
+  <section class="facebook" *ngIf="inputType=='facebook'">
+    <img src="{{ymkjData?.facebookImg}}" alt="">
+    <span>官方Facebook自助客服</span>
+  </section>
+</div>

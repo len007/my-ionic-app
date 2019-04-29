@@ -1,0 +1,27 @@
+<div class="common-content">
+  <div class="bg">
+    <img src="assets/imgs/case/case-bg.png" alt="">
+  </div>
+  <section class="tab" *ngFor="let item of caseData;let i = index;">
+    <div class="tab-left">
+      <div class="img-box">
+        <img src="{{item?.logo}}" alt="{{item?.name}}" class="logo">
+      </div>
+      <div class="info">
+        <span class="name">{{item?.name}}</span>
+        <span class="label">{{item?.label}}</span>
+        <span class="spec">{{item?.spec}}</span>
+        <span class="dec">{{item?.dec}}</span>
+        <span class="download">
+          <img src="{{item?.downloadIcon}}" alt="">
+          扫描二维码下载
+        </span>
+      </div>
+    </div>
+    <div class="tab-right" id="{{'autoPlay'+i}}">
+      <img src="assets/imgs/case/bodhi2.png" alt="" class="spec-img">
+      <img [src]="img" alt="" [ngClass]="{'img0': i==0,'img1': i==1,'img2': i==2}" *ngFor="let img of item?.imgs;let i = index;">
+    </div>
+  </section>
+  <footer class="case-footer">CopyRight©MMEarn</footer>
+</div>

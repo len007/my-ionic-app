@@ -1,0 +1,127 @@
+.site-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 11;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
+  background: #fff;
+  color: #000;
+  display: flex;
+  width: 100%;
+  min-height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 550px;
+
+  .logo {
+    margin: 0 18px;
+    width: 96px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+
+    img {
+      max-width: 32px;
+      height: 100%;
+    }
+  }
+
+  .menu {
+    font-size: 16px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 2vw;
+
+    .menu-item {
+      text-align: center;
+      cursor: pointer;
+      margin-right: 2vw;
+      position: relative;
+      padding-bottom: 3px;
+    }
+    .menu-item:hover{
+      color: #ccc;
+    }
+    .active::after{
+      content: " ";
+      left: 0;
+      right: 0;
+      top:100%;
+      position: absolute;
+      background: #007aff;
+      height: 3px;
+    }
+
+    .menu-img {
+      display: none;
+      height: 32px;
+      width: 32px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .other-menu {
+      display: flex;
+      position: absolute;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      top: 65px;
+      right: 2vw;
+      background: #fff;
+      padding: 3px 0;
+
+      span {
+        width: 4rem;
+        text-align: center;
+        margin: 0 1rem;
+        padding: 3px 0;
+        cursor: pointer;
+      }
+
+      span:hover {
+        color: #ccc;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .site-header {
+    min-width: unset;
+
+    .title {
+      display: none;
+    }
+
+    .menu {
+      min-width: unset;
+
+      .menu-img {
+        display: block;
+      }
+
+      .menu-item:nth-child(2),
+      .menu-item:nth-child(3),
+      .menu-item:nth-child(4),
+      .menu-item:nth-child(5),
+      .menu-item:nth-child(6) {
+        display: none;
+      }
+
+      .menu-item:hover {
+        color: #ccc;
+      }
+    }
+  }
+
+  .wraper-header {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}

@@ -1,0 +1,32 @@
+<section class="common-content">
+  <div class="home-box">
+    <nz-carousel nzAutoPlay>
+      <div class="img-box" nz-carousel-content *ngFor="let img of imgList;">
+        <img src="{{img}}" alt="{{img}}">
+      </div>
+    </nz-carousel>
+  </div>
+  <div class="home-box tagcloud" style="height:100vw">
+    <a *ngFor="let item of homeData?.mmearn" class="mmearn">{{item}}</a>
+  </div>
+  <div class="home-box" id="certify">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide img-box" *ngFor="let img of imgList;">
+          <img [src]="img" alt="">
+        </div>
+      </div>
+      <!-- 如果需要分页器 -->
+      <div class="swiper-pagination"></div>
+      <!-- 如果需要导航按钮 -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+  <div class="home-box">
+  </div>
+  <div class="home-box">
+  </div>
+  <div class="home-box">
+  </div>
+</section>
