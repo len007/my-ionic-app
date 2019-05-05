@@ -1,12 +1,37 @@
 <section class="broad-content">
-  <img src="assets/imgs/icon/u12.svg" alt="" (click)="showMask('tel')" (mouseenter)="showTooltip('tel')"
-    (mouseleave)="hideTooltip()">
-  <img src="assets/imgs/icon/qq.svg" alt="" (click)="showMask('qq')" (mouseenter)="showTooltip('qq')"
-    (mouseleave)="hideTooltip()">
-  <img src="assets/imgs/icon/wechat.svg" alt="" (click)="showMask('wechat')" (mouseenter)="showTooltip('wechat')"
-    (mouseleave)="hideTooltip()">
-  <img src="assets/imgs/icon/facebook.svg" alt="" (click)="showMask('facebook')" (mouseenter)="showTooltip('facebook')"
-    (mouseleave)="hideTooltip()">
-  <app-pop [inputType]="inputType" [isShowMask]="isShowMask"></app-pop>
+  <img src="assets/imgs/icon/u12.svg" alt="" nz-popover
+    [nzContent]="popTemplate1" [(nzVisible)]="tipVisible1" nzPlacement="leftTop">
+  <img src="assets/imgs/icon/qq.svg" alt="" nz-popover 
+    [nzContent]="popTemplate2" [(nzVisible)]="tipVisible2" nzPlacement="left">
+  <img src="assets/imgs/icon/wechat.svg" alt="" nz-popover 
+    [nzContent]="popTemplate3" [(nzVisible)]="tipVisible3" nzPlacement="left">
+  <img src="assets/imgs/icon/facebook.svg" alt="" nz-popover 
+    [nzContent]="popTemplate4" [(nzVisible)]="tipVisible4" nzPlacement="leftBottom">
+  <ng-template #popTemplate1>
+    <section class="tel">
+      <span>咨询热线</span>
+      <span *ngFor="let item of ymkjData?.tel">{{item}}</span>
+    </section>
+  </ng-template>
+  <ng-template #popTemplate2>
+    <section class="qq">
+      <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={{ymkjData?.qq}}&site=qq&menu=yes">
+        <img src="assets/imgs/icon/qq.svg" alt="点击这里与我交谈" title="点击这里与我交谈" class="qq-icon" />
+        QQ交谈
+      </a>
+      <span>{{ymkjData?.qq}}</span>
+    </section>
+  </ng-template>
+  <ng-template #popTemplate3>
+    <section class="wechat">
+      <img src="{{ymkjData?.wechatImg}}" alt="">
+      <span>官方微信自助客服</span>
+    </section>
+  </ng-template>
+  <ng-template #popTemplate4>
+    <section class="facebook">
+      <img src="{{ymkjData?.facebookImg}}" alt="">
+      <span>官方Facebook自助客服</span>
+    </section>
+  </ng-template>
 </section>
-<div class="wraper wraper-side" [hidden]="!isShowMask" (click)="hideMask()"></div>

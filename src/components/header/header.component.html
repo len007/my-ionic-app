@@ -1,33 +1,42 @@
-<section class="site-header">
+<section class="site-header" [ngClass]="{'site-header-scroll': isOverEvent}" [bottomOffset]="80" [topOffset]="0" detect-scroll (onScroll)="handleScroll($event)">
   <div class="logo">
-    <img src="assets/imgs/logo.png" alt="">
-    <span class="title">仰曼科技</span>
+    <img src="assets/imgs/header/logo1.png" alt="MMEarn">
+    <img src="assets/imgs/header/logo2.png" alt="仰曼科技">
+    <img src="assets/imgs/header/logo1-scroll.png" alt="MMEarn">
+    <img src="assets/imgs/header/logo2-scroll.png" alt="仰曼科技">
   </div>
   <div class="menu">
-    <span [ngClass]="{'active':activeTab=='home'||hoverTab=='home'}" (mouseenter)="mouseEnterFun('home')"
-      (mouseleave)="mouseLeaveFun()" class="menu-item" (click)="currentState='initial';toHomePage()">{{'首页'}}</span>
-    <span [ngClass]="{'active':activeTab=='case'||hoverTab=='case'}" (mouseenter)="mouseEnterFun('case')"
-      (mouseleave)="mouseLeaveFun()" class="menu-item" (click)="toCasePage()">{{'案例'}}</span>
-    <span [ngClass]="{'active':activeTab=='details'||hoverTab=='details'}" (mouseenter)="mouseEnterFun('details')"
-      (mouseleave)="mouseLeaveFun()" class="menu-item" (click)="toDetailsPage()">{{'商城模板'}}</span>
-    <span [ngClass]="{'active':activeTab=='server'||hoverTab=='server'}" (mouseenter)="mouseEnterFun('server')"
-      (mouseleave)="mouseLeaveFun()" class="menu-item" (click)="toServerPage()">{{'服务支持'}}</span>
-    <span [ngClass]="{'active':activeTab=='about'||hoverTab=='about'}" (mouseenter)="mouseEnterFun('about')"
-      (mouseleave)="mouseLeaveFun()" class="menu-item" (click)="toAboutPage()">{{'关于我们'}}</span>
-    <span [ngClass]="{'active':activeTab=='secret'||hoverTab=='secret'}" (mouseenter)="mouseEnterFun('secret')"
-      (mouseleave)="mouseLeaveFun()" class="menu-item" (click)="toSecretPage()">{{'隐私政策'}}</span>
-
-    <div class="other-menu" [@menuClick]="currentState">
-      <span (click)="currentState='initial';toCasePage()">{{'案例'}}</span>
-      <span (click)="currentState='initial';toDetailsPage()">{{'商城模板'}}</span>
-      <span (click)="currentState='initial';toServerPage()">{{'服务支持'}}</span>
-      <span (click)="currentState='initial';toAboutPage()">{{'关于我们'}}</span>
-      <span (click)="currentState='initial';toSecretPage()">{{'隐私政策'}}</span>
+    <span [ngClass]="{'active':activeTab=='home'}" class="menu-item" (click)="menuVisible=false;;toHomePage()">{{'首页'}}</span>
+    <span [ngClass]="{'active':activeTab=='case'}" class="menu-item" (click)="toCasePage()">{{'案例'}}</span>
+    <span [ngClass]="{'active':activeTab=='details'}" class="menu-item" (click)="toDetailsPage()">{{'商城模板'}}</span>
+    <span [ngClass]="{'active':activeTab=='server'}" class="menu-item" (click)="toServerPage()">{{'服务支持'}}</span>
+    <span [ngClass]="{'active':activeTab=='about'}" class="menu-item" (click)="toAboutPage()">{{'关于我们'}}</span>
+    <span [ngClass]="{'active':activeTab=='secret'}" class="menu-item" (click)="toSecretPage()">{{'隐私政策'}}</span>
+    <div class="menu-img" nz-popover nzTitle="" [(nzVisible)]="menuVisible" nzPlacement="bottomRight"
+      (nzVisibleChange)="change($event)" nzTrigger="click" [nzContent]="contentTemplate"
+      nzOverlayClassName="other-menu">
+      <i nz-icon [nzType]="menuVisible?'menu-fold':'menu-unfold'" nzTheme="outline"></i>
     </div>
-    <span class="menu-img" (click)="changeState()"><img src="assets/imgs/icon/menu.svg" alt=""></span>
+    <ng-template #contentTemplate>
+      <div class="other-menu">
+        <span (click)="menuVisible=false;toCasePage()">{{'案例'}}</span>
+        <span (click)="menuVisible=false;toDetailsPage()">{{'商城模板'}}</span>
+        <span (click)="menuVisible=false;toServerPage()">{{'服务支持'}}</span>
+        <span (click)="menuVisible=false;toAboutPage()">{{'关于我们'}}</span>
+        <span (click)="menuVisible=false;toSecretPage()">{{'隐私政策'}}</span>
+      </div>
+    </ng-template>
   </div>
-  <!-- <div class="lan">
-    <span>{{'语言'}}</span>
-  </div> -->
 </section>
-<div class="wraper wraper-header" [hidden]="currentState==='initial'" (click)="changeState()"></div>
+<!-- <div class="logo">
+  <img src="assets/imgs/header/logo1-scroll.png" alt="MMEarn">
+  <img src="assets/imgs/header/logo2-scroll.png" alt="仰曼科技">
+</div>
+<ul nz-menu [nzMode]="'horizontal'">
+  <li nz-menu-item (click)="menuVisible=false;;toHomePage()">{{'首页'}}</li>
+  <li nz-menu-item (click)="toCasePage()">{{'案例'}}</li>
+  <li nz-menu-item (click)="toDetailsPage()">{{'商城模板'}}</li>
+  <li nz-menu-item (click)="toServerPage()">{{'服务支持'}}></li>
+  <li nz-menu-item (click)="toAboutPage()">{{'关于我们'}}></li>
+  <li nz-menu-item (click)="toSecretPage()">{{'隐私政策'}}></li>
+</ul> -->

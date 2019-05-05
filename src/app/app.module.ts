@@ -8,16 +8,21 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from '../components/header/header.component';
 import { BroadsideComponent } from '../components/broadside/broadside.component';
-import { PopComponent } from '../components/pop/pop.component';
 import { BroadcastService } from '../services/broadcast/broadcast.service';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
+import { ScrollDirective } from '../directives/scroll.directive';
+import { FooterComponent } from '../components/footer/footer.component';
+
+// import { MyOwnCustomMaterialModule } from './material.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     BroadsideComponent,
     HeaderComponent,
-    PopComponent,
+    ScrollDirective,
+    FooterComponent,
   ],
   imports: [
     FormsModule,

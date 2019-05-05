@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener, } from '@angular/core';
+import { ymkjData } from '../../models/data';
 
 @Component({
   selector: 'app-broadside',
@@ -6,34 +7,14 @@ import { Component, OnInit, HostListener, } from '@angular/core';
   styleUrls: ['./broadside.component.scss']
 })
 export class BroadsideComponent implements OnInit {
-  public inputType = 'null';
-  public isShowMask = false;
+  public ymkjData = ymkjData;
+
+  public tipVisible1 = false;
+  public tipVisible2 = false;
+  public tipVisible3 = false;
+  public tipVisible4 = false;
+  public inputType = '';
 
   constructor() { }
   ngOnInit() { }
-  showTooltip(tmp) {  // hover事件
-    if (!this.isShowMask) {
-      this.inputType = tmp;
-    }
-  }
-  hideTooltip() {     // leave事件
-    if (!this.isShowMask) {
-      this.inputType = 'null';
-    }
-  }
-  showMask(t) {  // 点击打开
-    if (t === this.inputType && this.isShowMask) {
-      this.isShowMask = false;
-      this.inputType = 'null';
-    } else if (t === this.inputType) {
-      this.inputType = t;
-      this.isShowMask = true;
-    } else {
-      this.inputType = t;
-    }
-  }
-  hideMask() {    // 点击关闭
-    this.isShowMask = false;
-    this.inputType = 'null';
-  }
 }
