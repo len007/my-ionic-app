@@ -1,0 +1,38 @@
+{
+  "主页": {
+    "cn": "主页",
+    "en": "Home"
+  },
+  "商城": {
+    "cn": "商城",
+    "en": "Shop"
+  },
+  "购物车": {
+    "cn": "购物车",
+    "en": "Cart"
+  },
+  "我的": {
+    "cn": "我的",
+    "en": "Me"
+  },
+  "LANGUAGE.登录": {
+    "cn": "登录",
+    "en": "Log In"
+  },
+  "LANGUAGE.register": {
+    "cn": "注册",
+    "en": "Register"
+  },
+  "LANGUAGE.忘记密码": {
+    "cn": "忘记密码",
+    "en": "Forget Password"
+  },
+  "LANGUAGE.手机号码": {
+    "cn": "手机号码",
+    "en": "Tel-phone"
+  },
+  "LANGUAGE.密码": {
+    "cn": "密码",
+    "en": "Password"
+  }
+}
