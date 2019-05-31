@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptionsArgs, Headers } from '@angular/http';
-import { ErrorMaster } from '../core/error';
-import { Language } from '../core/language';
 import { USER_INFO_API, ROOT_URL, MOCK_URL } from '../values/api';
 
 /*
@@ -23,7 +21,7 @@ export class BaseService {
   public install_id;
   public os;
 
-  constructor(public http: Http) {}
+  constructor(public http: Http) { }
 
 
   public _get(url: string, params?: Object, options?: RequestOptionsArgs): Promise<any> {
@@ -91,12 +89,12 @@ export class BaseService {
             }
           } else {
             // 进行错误处理
-            reject(ErrorMaster.handleError(res));
+            // reject(ErrorMaster.handleError(res));
           }
         })
         .catch(err => {
           // 进行错误处理
-          reject(ErrorMaster.handleError(err));
+          // reject(ErrorMaster.handleError(err));
         });
     });
   }

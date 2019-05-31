@@ -1,0 +1,19 @@
+{
+    "home": "主页",
+    "shop": "商城",
+    "cart": "购物车",
+    "me": "我的",
+    "login": "登录",
+    "register": "注册",
+    "forgetPassword": "忘记密码",
+    "telphone": "手机号码",
+    "username": "账号",
+    "password": "密码",
+    "input-username": "请输入账号",
+    "input-password": "请输入密码",
+    "re-input-password": "请再次输入密码",
+    "error-usernameorpassword": "请输入正确的用户名和密码",
+    "error-password-password": "两次输入的密码不一致！",
+    "new-register":"新用户注册",
+    "to-login": "已有账号？去登陆"
+}

@@ -5,14 +5,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LoginPage } from './login';
 
-import { CoreModule } from '../../core/core.module';
+import { TranslateModule }from "@ngx-translate/core";
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    CoreModule,
+    TranslateModule,
     RouterModule.forChild([{ path: '', component: LoginPage }])
   ],
   declarations: [LoginPage]

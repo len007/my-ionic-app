@@ -12,13 +12,8 @@ const routes: Routes = [
     path: 'register',
     loadChildren: '../pages/register/register.module#RegisterPageModule'
   }, {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  }, {
     path: '**',
     redirectTo: 'login',
-    pathMatch: 'full'
   }
 ];
 @NgModule({

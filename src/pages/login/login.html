@@ -1,6 +1,23 @@
 <ion-content>
-  <div class="logo">
-    <img src="assets/newImgs/logo.png">
+  <div class="login-bg">
+    <img src="assets/svg/login/login-bg.svg">
+    <div>{{'login'|translate}}</div>
   </div>
-  <!-- <p class="new_user">{{'LANGUAGE.register'|translate}}</p> -->
+  <div class="login-box">
+    <div class="item">
+      <input type="text" placeholder="{{'input-username'| translate}}" [(ngModel)]="loginInfo.username"
+        (ngModelChange)="inputLogin()">
+    </div>
+    <div class="item">
+      <input type="text" placeholder="{{'input-password'| translate}}" [(ngModel)]="loginInfo.password"
+        (ngModelChange)="inputLogin()">
+    </div>
+    <div class="item">
+      <div class="forget-password">{{'forgetPassword'|translate}}</div>
+      <div class="login-btn" (click)="login()">{{'login'|translate}}</div>
+    </div>
+    <div class="item">
+      <div class="register" (click)="toRegister()">{{'new-register'|translate}}</div>
+    </div>
+  </div>
 </ion-content>

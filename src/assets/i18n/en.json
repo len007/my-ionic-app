@@ -1,0 +1,20 @@
+{
+    "home": "Home",
+    "shop": "Shop",
+    "cart": "Cart",
+    "me": "Me",
+    "login": "Log In",
+    "register": "Register",
+    "forgetPassword": "Forget password",
+    "telphone": "Tel-phone",
+    "username": "username",
+    "password": "Password",
+    "input-username": "Please enter username",
+    "input-password": "Please enter password",
+    "re-input-password": "Please enter password again",
+    "error-usernameorpassword": "Please enter correct username and password",
+    "error-password-password": "Entered passwords differ!",
+    "new-register":"Register",
+    "to-login": "Exit's count? To Login"
+
+}

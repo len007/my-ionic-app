@@ -1,1 +1,32 @@
-注册页面
+<ion-content>
+    <div class="login-bg">
+        <img src="assets/svg/login/login-bg.svg">
+        <div>{{'register'|translate}}</div>
+    </div>
+    <div class="login-box">
+        <div class="item">
+            <input type="text" placeholder="{{'input-username'| translate}}" [(ngModel)]="loginInfo.username"
+                (ngModelChange)="inputLogin()">
+        </div>
+        <div class="item">
+            <input type="text" placeholder="{{'input-password'| translate}}" [(ngModel)]="loginInfo.password"
+                (ngModelChange)="inputLogin()">
+        </div>
+        <div class="item">
+            <input type="text" placeholder="{{'re-input-password'| translate}}" [(ngModel)]="loginInfo.passwordCheck"
+                (ngModelChange)="inputLogin()">
+                <span class="differ-password" *ngIf="loginInfo.password&&loginInfo.passwordCheck&&loginInfo.password!==loginInfo.passwordCheck">{{'error-password-password'| translate}}</span>
+        </div>
+        <!-- <div class="item">
+            <input type="text" placeholder="{{'input-code'| translate}}" [(ngModel)]="loginInfo.code"
+                (ngModelChange)="inputCode()">
+        </div> -->
+        <div class="item">
+            <div class="forget-password">{{'forgetPassword'|translate}}</div>
+            <div class="login-btn" (click)="register()">{{'login'|translate}}</div>
+        </div>
+        <div class="item">
+            <div class="register" (click)="toLogin()">{{'to-login'|translate}}</div>
+        </div>
+    </div>
+</ion-content>
