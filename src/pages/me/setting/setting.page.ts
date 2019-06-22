@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-setting',
@@ -7,8 +8,14 @@ import { Component } from '@angular/core';
 })
 export class SettingPage {
 
-  constructor() {
+  constructor(
+    public nav: NavController
+  ) {
     console.log(1111);
   }
-
+  toLoginOut(){
+    window.localStorage.removeItem('userInfo');
+    window.localStorage.removeItem('token');
+    this.nav.navigateRoot("/login");
+  }
 }

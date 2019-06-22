@@ -9,8 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { BaseService } from '../services/base.service';
+import { HttpsService } from '../services/https.service';
 
 import { HttpModule, Http } from '@angular/http';
+import { JsonpModule } from "@angular/http";  // 引入Jsonp模块
 
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
@@ -31,6 +33,7 @@ export function createTranslateHttpLoader(http: HttpClient) {
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpModule,
+    JsonpModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -44,6 +47,7 @@ export function createTranslateHttpLoader(http: HttpClient) {
     StatusBar,
     SplashScreen,
     BaseService,
+    HttpsService,
     Device,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

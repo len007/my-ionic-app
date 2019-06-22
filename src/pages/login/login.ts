@@ -5,7 +5,9 @@ import { TabsPage } from '../tabs/tabs.page';
 import { BaseService } from '../../services/base.service';
 import { ToastController, NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { HttpsService } from '../../services/https.service';
 
+import { USER_INFO_API } from '../../values/api';
 
 /**
  * Generated class for the LoginPage page.
@@ -36,6 +38,7 @@ export class LoginPage implements OnInit {
     public toast: ToastController,
     public translateService: TranslateService,
     public nav: NavController,
+    public http: HttpsService,
   ) { }
   ngOnInit() {  }
   inputLogin() {
@@ -55,11 +58,24 @@ export class LoginPage implements OnInit {
     });
     toast.present();
   }
-  login() {
+  login() {  // 提交-登录
     if (this.canLogin) {
-      window.localStorage.setItem('token',this.loginInfo.username);
-      // 此处调用接口
-      this.nav.navigateRoot('/tabs/home');
+      
+      let params = {
+        "username": this.loginInfo.username,
+        "password": this.loginInfo.password
+      }
+      this.http.post(USER_INFO_API.login, params).subscribe(res => {
+        if (res['status'] == "success") {
+          window.localStorage.setItem('userInfo', JSON.stringify(res.user));
+          window.localStorage.setItem('token', res.user['api_token']);
+          this.nav.navigateRoot('/tabs');
+        }else{
+          alert(res['errorMsg']);
+        }
+      }, errorHandler => {
+        alert('系统繁忙!请稍后再试');
+      });
     }
     else {
       let message = "请输入正确的用户名和密码";

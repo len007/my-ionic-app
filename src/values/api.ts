@@ -1,6 +1,6 @@
 export const DEBUG: boolean = false;
 
-export const ROOT_URL = DEBUG ? 'http://47.95.226.153:10081' : 'http://47.95.226.153:10081';
+export const ROOT_URL = DEBUG ? 'http://47.95.226.153:8080' : 'http://47.95.226.153:8080';
 // export const ROOT_URL = DEBUG ? 'http://47.95.226.153:10081' : 'http://api.mmetopup.com';
 export const RESOURCE_URL = DEBUG ? 'http://47.95.226.153:10081/images/' : 'http://47.95.226.153:10081/images/';
 

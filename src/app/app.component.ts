@@ -19,8 +19,9 @@ export class AppComponent{
   ) {
     this.initTranslate();
     this.initializeApp();
-    if(window.localStorage.getItem('token')){ // 判断是否登陆
-      this.nav.navigateRoot('/tabs');
+    if(!window.localStorage.getItem('token')&& !window.localStorage.getItem('userInfo')){ // 判断是否登陆
+      console.log('>>>未登录>>>>跳转至登录页>>>');
+      this.nav.navigateRoot('/login');
     }
   }
 
