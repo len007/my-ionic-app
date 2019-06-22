@@ -3,15 +3,21 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Tab3Page } from './tab3.page';
+import { MessagePage } from './message.page';
+
+import { TranslateModule }from "@ngx-translate/core";
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: Tab3Page }])
+    TranslateModule,
+    RouterModule.forChild([{
+      path: '',
+      component: MessagePage
+    }])
   ],
-  declarations: [Tab3Page]
+  declarations: [MessagePage]
 })
-export class Tab3PageModule {}
+export class MessagePageModule { }

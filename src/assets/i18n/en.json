@@ -15,6 +15,17 @@
     "error-usernameorpassword": "Please enter correct username and password",
     "error-password-password": "Entered passwords differ!",
     "new-register":"Register",
-    "to-login": "Exit's count? To Login"
+    "to-login": "Exit's count? To Login",
+    "blance":"Balance",
+    "about":"About",
+    "setting":"Setting",
+    "share":"Share",
+    "multi-language":"Multi-Language",
+    "message":"Message",
+    "orders": "order",
+    "all-orders":"Orders >>",
+    "un-pay":"unPay",
+    "un-deliver":"unDeliver",
+    "un-take":"unTake"
 
 }

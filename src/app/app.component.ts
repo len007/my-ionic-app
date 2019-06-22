@@ -20,7 +20,7 @@ export class AppComponent{
     this.initTranslate();
     this.initializeApp();
     if(window.localStorage.getItem('token')){ // 判断是否登陆
-      this.nav.navigateRoot('/tabs/home');
+      this.nav.navigateRoot('/tabs');
     }
   }
 

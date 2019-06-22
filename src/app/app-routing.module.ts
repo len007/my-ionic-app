@@ -13,7 +13,7 @@ const routes: Routes = [
     loadChildren: '../pages/register/register.module#RegisterPageModule'
   }, {
     path: '**',
-    redirectTo: 'login',
+    redirectTo: 'tabs',
   }
 ];
 @NgModule({

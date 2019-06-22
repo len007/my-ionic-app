@@ -1,12 +1,11 @@
 import { IonicModule } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CartPage } from './cart.page';
 
-import { TabsPageRoutingModule } from './tabs.router.module';
-
-import { TabsPage } from './tabs.page';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule }from "@ngx-translate/core";
 
 @NgModule({
   imports: [
@@ -14,8 +13,8 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     FormsModule,
     TranslateModule,
-    TabsPageRoutingModule
+    RouterModule.forChild([{ path: '', component: CartPage }])
   ],
-  declarations: [TabsPage]
+  declarations: [CartPage]
 })
-export class TabsPageModule {}
+export class CartPageModule {}

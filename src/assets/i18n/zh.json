@@ -14,6 +14,20 @@
     "re-input-password": "请再次输入密码",
     "error-usernameorpassword": "请输入正确的用户名和密码",
     "error-password-password": "两次输入的密码不一致！",
-    "new-register":"新用户注册",
-    "to-login": "已有账号？去登陆"
+    "new-register": "新用户注册",
+    "to-login": "已有账号？去登陆",
+    "blance": "余额",
+    "about": "关于",
+    "setting": "设置",
+    "share": "分享好礼",
+    "multi-language": "多语言",
+    "message": "消息中心",
+    "orders": "订单",
+    "all-orders": "全部订单 >>",
+    "all": "全部",
+    "un-pay": "待付款",
+    "un-deliver": "待发货",
+    "un-take": "待收货",
+    "complete": "已完成",
+    "my-order": "我的订单"
 }

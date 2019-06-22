@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-title>
+      Tab Three
+    </ion-title> -->
+    <div class="cart-bg">
+      <img class="me-bg" src="assets/svg/me/me-bg.svg">
+      <div class="info-box">
+        <div class="info">
+          <ion-avatar>
+            <img src="{{userInfo?.avatar}}">
+          </ion-avatar>
+          <ion-label>{{userInfo?.name}}</ion-label>
+        </div>
+        <div class="order-box">
+          <div class="all">
+            <span>{{'orders'|translate}}</span>
+            <span (click)="toOrdersPage()">{{'all-orders'|translate}}</span>
+          </div>
+          <div class="details">
+            <div class="item">
+              <span>{{orders?.unPay}}</span>
+              <span>{{'un-pay'|translate}}</span>
+            </div>
+            <div class="item">
+                <span>{{orders?.unDeliver}}</span>
+                <span>{{'un-deliver'|translate}}</span>
+              </div>
+            <div class="item">
+                <span>{{orders?.unTake}}</span>
+                <span>{{'un-take'|translate}}</span>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <div class="me-content">
+    <ion-item detail lines="none" (click)="toBlancePage()">
+      <ion-img src="assets/svg/me/blance.svg"></ion-img>
+      <ion-label>
+        {{'blance'|translate}}
+      </ion-label>
+    </ion-item>
+    <ion-item detail lines="none" (click)="toSharePage()">
+      <ion-img src="assets/svg/me/share.svg"></ion-img>
+      <ion-label>
+        {{'share'|translate}}
+      </ion-label>
+    </ion-item>
+    <ion-item detail lines="none" (click)="toMessagePage()">
+      <ion-img src="assets/svg/me/message.svg"></ion-img>
+      <ion-label>
+        {{'message'|translate}}
+      </ion-label>
+    </ion-item>
+    <ion-item detail lines="none" (click)="toLanguagePage()">
+      <ion-img src="assets/svg/me/multi-language.svg"></ion-img>
+      <ion-label>
+        {{'multi-language'|translate}}
+      </ion-label>
+    </ion-item>
+    <ion-item detail lines="none" (click)="toAboutPage()">
+      <ion-img src="assets/svg/me/about.svg"></ion-img>
+      <ion-label>
+        {{'about'|translate}}
+      </ion-label>
+    </ion-item>
+    <ion-item detail lines="none" (click)="toSettingPage()">
+      <ion-img src="assets/svg/me/setting.svg"></ion-img>
+      <ion-label>
+        {{'setting'|translate}}
+      </ion-label>
+    </ion-item>
+  </div>
+</ion-content>

@@ -1,0 +1,101 @@
+ion-header::after {
+  height: 0 !important;
+}
+ion-header {
+  background: #12D96B;
+
+  ion-title,ion-buttons {
+    color: #fff;
+  }
+  .my-toolbar {
+    --min-height: 17vw;
+  }
+  .top-menu{
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    height: 9vw;
+    font-size: 3.67vw;
+
+    span{
+      width: 20%;
+      height: 9vw;
+      line-height: 9vw;
+      text-align: center;
+    }
+    .span-select{
+      font-weight: bold;
+    }
+  }
+}
+.cart-bg {
+  width: 100%;
+  height: 69vw;
+  position: relative;
+  background: #f4f4f4;
+
+  .me-bg {
+    width: 100%;
+    height: 49vw;
+  }
+  .info-box {
+    position: absolute;
+    top: 0vw;
+    left: 3vw;
+    right: 3vw;
+    bottom: 3vw;
+    font-size: 5.56vw;
+    font-weight: bold;
+    color: white;
+
+    .info {
+      width: 100%;
+      height: 38vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 3vw;
+
+      ion-avatar {
+        width: 14vw;
+        height: 14vw;
+        margin-bottom: 2vw;
+      }
+    }
+
+    .order-box {
+      background: #fff;
+      width: 100%;
+      height: 28vw;
+      border-radius: 2vw;
+    }
+  }
+}
+ion-content {
+  .me-content {
+    border-radius: 2vw;
+    background: #fff;
+    width: 94vw;
+    margin: 0 auto;
+    padding: 2vw;
+
+    ion-item {
+      display: flex;
+      height: 14vw;
+      justify-content: center;
+      border-bottom: 2px #f4f4f4 solid;
+      font-size: 3.7vw;
+      color: #262626;
+
+      ion-img {
+        width: 4vw;
+        max-height: 4vw;
+        margin-right: 5vw;
+      }
+    }
+    ion-item:last-child {
+      border-bottom: unset;
+    }
+  }
+}

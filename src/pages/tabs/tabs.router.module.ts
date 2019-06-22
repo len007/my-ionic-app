@@ -2,51 +2,27 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: TabsPage,
-    children: [
-      {
-        path: 'home',
-        children: [
-          {
-            path: '',
-            loadChildren: '../home/home.module#HomePageModule'
-          }
-        ]
-      },
-      {
-        path: 'tab2',
-        children: [
-          {
-            path: '',
-            loadChildren: '../tab2/tab2.module#Tab2PageModule'
-          }
-        ]
-      },
-      {
-        path: 'tab3',
-        children: [
-          {
-            path: '',
-            loadChildren: '../tab3/tab3.module#Tab3PageModule'
-          }
-        ]
-      },
-      {
-        path: '',
-        redirectTo: '/tabs/home',
-        pathMatch: 'full'
-      }
-    ]
-  },
-  {
-    path: '',
-    redirectTo: '/tabs/home',
-    pathMatch: 'full'
-  }
-];
+const routes: Routes = [{
+  path: '',
+  component: TabsPage,
+  children: [
+    {
+      path: 'home',
+      loadChildren: '../home/home.module#HomePageModule'
+    },
+    {
+      path: 'cart',
+      loadChildren: '../cart/cart.module#CartPageModule'
+    }, {
+      path: 'me',
+      loadChildren: '../me/me.module#MePageModule'
+    },
+    {
+      path: '**',
+      redirectTo: 'me',
+    }
+  ]
+}];
 
 @NgModule({
   imports: [
@@ -54,4 +30,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }
