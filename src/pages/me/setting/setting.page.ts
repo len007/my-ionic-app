@@ -29,4 +29,8 @@ export class SettingPage {
   toResetPassword() {
     this.nav.navigateForward("/tabs/me/setting/resetpassword");
   }
+  toBlancePage(){}
+  toSharePage(){}
+  toMessagePage(){}
+  toLanguagePage(){}
 }
