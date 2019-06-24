@@ -1,51 +1,46 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController, Platform, LoadingController } from '@ionic/angular';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { LoadingController, NavController, Platform } from '@ionic/angular';
 import { Device } from '@ionic-native/device/ngx';
-
 import { TranslateService } from '@ngx-translate/core';
-
-import { CommonService } from '../../services/common.service';
 import { HttpsService } from '../../services/https.service';
 import { USER_INFO_API } from '../../values/api';
 
+import { CommonService } from '../../services/common.service';
 
 declare let Wechat: any;
 
 @Component({
-  selector: 'page-register',
-  templateUrl: 'register.html',
-  styleUrls: ['register.scss']
+  selector: 'page-forgetpassword',
+  templateUrl: 'forgetpassword.html',
+  styleUrls: ['forgetpassword.scss']
 })
-export class RegisterPage implements OnInit {
+export class ForgetPasswordPage implements OnInit {
 
   public lan = "zh";
-  public loginInfo = {
+  public api_token;
+  public userInfo = {
     username: "",
     password: "",
     passwordCheck: "",
-    uuid: "", //作单点登录用
+    uuid: "",
   };
   public canRegister = 0;
 
   constructor(
     private nav: NavController,
-    public common: CommonService,
-    public loading: LoadingController,
     private platform: Platform,
     private device: Device,
     private http: HttpsService,
-    private translateService: TranslateService) {
+    private translateService: TranslateService,
+    public common: CommonService,
+    public loading: LoadingController,
+  ) {
 
   }
-  ngOnInit(): void {
-    console.log(this.device);
-    this.loginInfo.uuid = this.device.uuid;
-    // this.presentToast(this.loginInfo.uuid);
-  }
-
+  ngOnInit(): void { }
   inputLogin() {
-    if (/^\d{9,12}$/.test(this.loginInfo.username) && /^.{6,20}$/.test(this.loginInfo.password)) {
-      if (this.loginInfo.password === this.loginInfo.passwordCheck) {
+    if (/^\d{9,12}$/.test(this.userInfo.username) && /^.{6,20}$/.test(this.userInfo.password)) {
+      if (this.userInfo.password === this.userInfo.passwordCheck) {
         this.canRegister = 2;
       } else {
         this.canRegister = 1;
@@ -54,20 +49,20 @@ export class RegisterPage implements OnInit {
       this.canRegister = 0;
     }
   }
-  register() { // 提交-注册
+  forgetpassword() { // 提交-重置密码
     if (this.canRegister == 2) {
-      this.common.presentLoading();  // 加载
+      this.common.presentLoading();
       let params = {
-        "username": this.loginInfo.username,
-        "password": this.loginInfo.password
+        "username": this.userInfo.username,
+        "resetpassword": this.userInfo.password,
       }
-      this.http.post(USER_INFO_API.register, params).subscribe(res => {
+      this.http.post(USER_INFO_API.forgetpassword, params).subscribe(res => {
         if (res['status'] == "success") {
           window.localStorage.setItem('userInfo', JSON.stringify(res.user));
           window.localStorage.setItem('token', res.user['api_token']);
           this.loading.dismiss();
-          this.common.presentLoading('跳转中...',1000).then(()=>{
-            this.nav.navigateRoot('/tabs/home');
+          this.common.presentLoading('密码重置成功', 500).then(() => {
+            this.nav.navigateRoot('/tabs/me');
           });
         } else {
           this.loading.dismiss();
@@ -75,7 +70,7 @@ export class RegisterPage implements OnInit {
         }
       }, errorHandler => {
         this.loading.dismiss();
-        this.common.presentToast('系统繁忙!请稍后再试', false);
+        this.common.presentToast('系统繁忙!请稍后再试',false);
       });
     } else if (this.canRegister == 1) {
       let message = "两次输入的密码不一致！";
@@ -84,7 +79,7 @@ export class RegisterPage implements OnInit {
           message = value;
         }
       })
-      this.common.presentToast(message, false);
+      this.common.presentToast(message,false);
     }
     else {
       let message = "请输入正确的用户名和密码";
@@ -93,13 +88,7 @@ export class RegisterPage implements OnInit {
           message = value;
         }
       })
-      this.common.presentToast(message, false);
+      this.common.presentToast(message,false);
     }
-  }
-  toLogin() {
-    this.nav.navigateForward('/login');
-  }
-  toForgetPassword() {
-    this.nav.navigateForward('/forgetpassword');
   }
 }

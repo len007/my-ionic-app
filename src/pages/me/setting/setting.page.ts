@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, LoadingController } from '@ionic/angular';
+import { CommonService } from '../../../services/common.service';
 
 @Component({
   selector: 'app-setting',
@@ -9,13 +10,23 @@ import { NavController } from '@ionic/angular';
 export class SettingPage {
 
   constructor(
-    public nav: NavController
+    public nav: NavController,
+    public common: CommonService,
+    public loading: LoadingController,
   ) {
-    console.log(1111);
   }
-  toLoginOut(){
-    window.localStorage.removeItem('userInfo');
-    window.localStorage.removeItem('token');
-    this.nav.navigateRoot("/login");
+  toLoginOut() {
+    this.common.presentAlertConfirm("要退出登陆吗？", "提示", "退出", () => {
+      window.localStorage.removeItem('userInfo');
+      window.localStorage.removeItem('token');
+      this.nav.navigateRoot("/login");
+    }, () => {
+      this.common.presentToast('你点击了取消', false, 2000, "关闭", () => {
+        console.log('test');
+      });
+    })
+  }
+  toResetPassword() {
+    this.nav.navigateForward("/tabs/me/setting/resetpassword");
   }
 }

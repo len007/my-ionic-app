@@ -6,7 +6,8 @@
     "login": "登录",
     "loginout": "退出登录",
     "register": "注册",
-    "forgetPassword": "忘记密码",
+    "forget-password": "忘记密码",
+    "reset-password": "修改密码",
     "telphone": "手机号码",
     "username": "账号",
     "password": "密码",
@@ -30,5 +31,6 @@
     "un-deliver": "待发货",
     "un-take": "待收货",
     "complete": "已完成",
-    "my-order": "我的订单"
+    "my-order": "我的订单",
+    "submit": "提交"
 }

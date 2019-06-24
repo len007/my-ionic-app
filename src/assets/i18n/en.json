@@ -6,7 +6,8 @@
     "login": "Log In",
     "loginout": "Login out",
     "register": "Register",
-    "forgetPassword": "Forget password",
+    "forget-password": "Forget password",
+    "reset-password": "Reset password",
     "telphone": "Tel-phone",
     "username": "username",
     "password": "Password",
@@ -27,6 +28,6 @@
     "all-orders":"Orders >>",
     "un-pay":"unPay",
     "un-deliver":"unDeliver",
-    "un-take":"unTake"
-
+    "un-take":"unTake",
+    "submit": "Submit"
 }

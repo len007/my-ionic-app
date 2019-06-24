@@ -12,7 +12,9 @@ export const USER_INFO_API = {
     sms: '/api/sms',   //发送验证码
     register: '/api/register',  //用户注册
     login: '/api/login',  //用户登陆
-    info: '/api/user/info',  //获取用户信息
+    info: '/api/info',  //获取用户信息
+    resetpassword: '/api/resetpassword',  // 修改密码
+    forgetpassword: '/api/forgetpassword',  // 重置密码
     cheak_code: '/api/user/check_code',  //找回密码或者设置支付密码前检验输入验证码是否正确 争对已经存在的用户
     set_nickname: '/api/user/set_nickname', //设置昵称
     set_head: '/api/user/set_head',  //设置头像

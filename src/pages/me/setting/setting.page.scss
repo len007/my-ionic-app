@@ -1,1 +1,26 @@
 
+.setting-content {
+    border-radius: 2vw;
+    background: #fff;
+    width: 94vw;
+    margin: 0 auto;
+    padding: 2vw;
+
+    ion-item {
+      display: flex;
+      height: 14vw;
+      justify-content: center;
+      border-bottom: 2px #f4f4f4 solid;
+      font-size: 3.7vw;
+      color: #262626;
+
+      ion-img {
+        width: 4vw;
+        max-height: 4vw;
+        margin-right: 5vw;
+      }
+    }
+    ion-item:last-child {
+      border-bottom: unset;
+    }
+  }

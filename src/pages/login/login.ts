@@ -1,13 +1,13 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Device } from '@ionic-native/device';
-import { TabsPage } from '../tabs/tabs.page';
 
 import { BaseService } from '../../services/base.service';
-import { ToastController, NavController } from '@ionic/angular';
+import { NavController, LoadingController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpsService } from '../../services/https.service';
 
 import { USER_INFO_API } from '../../values/api';
+import { CommonService } from '../../services/common.service';
 
 /**
  * Generated class for the LoginPage page.
@@ -35,7 +35,8 @@ export class LoginPage implements OnInit {
 
   constructor(
     public base: BaseService,
-    public toast: ToastController,
+    public common: CommonService,
+    public loading: LoadingController,
     public translateService: TranslateService,
     public nav: NavController,
     public http: HttpsService,
@@ -50,17 +51,10 @@ export class LoginPage implements OnInit {
     }
     this.canLogin = false;
   }
-  async presentToast(message) {
-    const toast = await this.toast.create({
-      message: message,
-      duration: 2000,
-      position: "top",
-    });
-    toast.present();
-  }
+
   login() {  // 提交-登录
     if (this.canLogin) {
-      
+      this.common.presentLoading();  // 加载
       let params = {
         "username": this.loginInfo.username,
         "password": this.loginInfo.password
@@ -69,12 +63,17 @@ export class LoginPage implements OnInit {
         if (res['status'] == "success") {
           window.localStorage.setItem('userInfo', JSON.stringify(res.user));
           window.localStorage.setItem('token', res.user['api_token']);
-          this.nav.navigateRoot('/tabs');
+          this.loading.dismiss();  // 结束加载
+          this.common.presentLoading('跳转中...',1000).then(()=>{
+            this.nav.navigateRoot('/tabs');
+          });
         }else{
-          alert(res['errorMsg']);
+          this.loading.dismiss();  // 结束加载
+          this.common.presentToast(res['errorMsg'],false);
         }
       }, errorHandler => {
-        alert('系统繁忙!请稍后再试');
+        this.loading.dismiss();  // 结束加载
+        this.common.presentToast('系统繁忙!请稍后再试',false);
       });
     }
     else {
@@ -83,12 +82,14 @@ export class LoginPage implements OnInit {
         if (value) {
           message = value;
         }
-      })
-      this.presentToast(message);
-      return
+      });
+      this.common.presentToast(message,false);
     }
   }
   toRegister(){
     this.nav.navigateForward('/register');
+  }
+  toForgetPassword(){
+    this.nav.navigateForward('forgetpassword');
   }
 }

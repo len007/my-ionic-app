@@ -12,6 +12,9 @@ const routes: Routes = [
     path: 'register',
     loadChildren: '../pages/register/register.module#RegisterPageModule'
   }, {
+    path: 'forgetpassword',
+    loadChildren: '../pages/forgetpassword/forgetpassword.module#ForgetPasswordPageModule'
+  }, {
     path: '**',
     redirectTo: 'tabs',
   }
