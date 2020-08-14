@@ -66,11 +66,11 @@ export class ForgetPasswordPage implements OnInit {
           });
         } else {
           this.loading.dismiss();
-          this.common.presentToast(res['errorMsg'], false);
+          this.common.presentToast(res['errorMsg'], "toast-error");
         }
       }, errorHandler => {
         this.loading.dismiss();
-        this.common.presentToast('系统繁忙!请稍后再试',false);
+        this.common.presentToast('系统繁忙!请稍后再试',"toast-error");
       });
     } else if (this.canRegister == 1) {
       let message = "两次输入的密码不一致！";
@@ -79,7 +79,7 @@ export class ForgetPasswordPage implements OnInit {
           message = value;
         }
       })
-      this.common.presentToast(message,false);
+      this.common.presentToast(message,"toast-error");
     }
     else {
       let message = "请输入正确的用户名和密码";
@@ -88,7 +88,7 @@ export class ForgetPasswordPage implements OnInit {
           message = value;
         }
       })
-      this.common.presentToast(message,false);
+      this.common.presentToast(message,"toast-error");
     }
   }
 }

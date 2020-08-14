@@ -5,9 +5,9 @@ import { AlertController, ToastController, LoadingController, } from '@ionic/ang
 export class CommonService {
 
   constructor(
-    public alertController: AlertController,
-    public toastController: ToastController,
-    public loadingController: LoadingController,
+    private alertController: AlertController,
+    private toastController: ToastController,
+    private loadingController: LoadingController,
   ) { }
 
   /**
@@ -51,15 +51,12 @@ export class CommonService {
     * @param closeButtonText 关闭按钮，可选
     * @param handler toast消失后的事件处理，可选
     */
-  async presentToast(msg: string, type: boolean, duration?: number, closeButtonText?: string, handler?: (...args: any[]) => void) {
+  async presentToast(msg: string, cssClass: string, duration?: number, handler?: (...args: any[]) => void) {
     let toast = await this.toastController.create({
       message: msg,
       duration: duration ? duration : 2000,
       position: "top",
-      color: type ? 'primary' : 'danger',
-      cssClass: "default-middle-toast",
-      showCloseButton: closeButtonText ? true : false,
-      closeButtonText: closeButtonText,
+      cssClass: cssClass,
       translucent: true, // 半透明
     });
 

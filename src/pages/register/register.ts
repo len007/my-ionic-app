@@ -40,7 +40,6 @@ export class RegisterPage implements OnInit {
   ngOnInit(): void {
     console.log(this.device);
     this.loginInfo.uuid = this.device.uuid;
-    // this.presentToast(this.loginInfo.uuid);
   }
 
   inputLogin() {
@@ -61,22 +60,26 @@ export class RegisterPage implements OnInit {
         "username": this.loginInfo.username,
         "password": this.loginInfo.password
       }
-      this.http.post(USER_INFO_API.register, params).subscribe(res => {
-        if (res['status'] == "success") {
-          window.localStorage.setItem('userInfo', JSON.stringify(res.user));
-          window.localStorage.setItem('token', res.user['api_token']);
-          this.loading.dismiss();
-          this.common.presentLoading('跳转中...',1000).then(()=>{
-            this.nav.navigateRoot('/tabs/home');
-          });
-        } else {
-          this.loading.dismiss();
-          this.common.presentToast(res['errorMsg'], false);
-        }
-      }, errorHandler => {
-        this.loading.dismiss();
-        this.common.presentToast('系统繁忙!请稍后再试', false);
+      this.loading.dismiss();
+      this.common.presentLoading('跳转中...',1000).then(()=>{
+        this.nav.navigateRoot('/tabs/home');
       });
+      // this.http.post(USER_INFO_API.register, params).subscribe(res => {
+      //   if (res['status'] == "success") {
+      //     window.localStorage.setItem('userInfo', JSON.stringify(res.user));
+      //     window.localStorage.setItem('token', res.user['api_token']);
+      //     this.loading.dismiss();
+      //     this.common.presentLoading('跳转中...',1000).then(()=>{
+      //       this.nav.navigateRoot('/tabs/home');
+      //     });
+      //   } else {
+      //     this.loading.dismiss();
+      //     this.common.presentToast(res['errorMsg'], "toast-error");
+      //   }
+      // }, errorHandler => {
+      //   this.loading.dismiss();
+      //   this.common.presentToast('系统繁忙!请稍后再试', "toast-error");
+      // });
     } else if (this.canRegister == 1) {
       let message = "两次输入的密码不一致！";
       this.translateService.get('error-password-password').subscribe(value => {
@@ -84,7 +87,7 @@ export class RegisterPage implements OnInit {
           message = value;
         }
       })
-      this.common.presentToast(message, false);
+      this.common.presentToast(message, "toast-error");
     }
     else {
       let message = "请输入正确的用户名和密码";
@@ -93,7 +96,7 @@ export class RegisterPage implements OnInit {
           message = value;
         }
       })
-      this.common.presentToast(message, false);
+      this.common.presentToast(message, "toast-error");
     }
   }
   toLogin() {

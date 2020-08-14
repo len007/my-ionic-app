@@ -1,23 +1,21 @@
 <ion-content>
-  <div class="login-bg">
-    <img src="assets/svg/login/login-bg.svg">
-    <div>{{'login'|translate}}</div>
-  </div>
-  <div class="login-box">
-    <div class="item">
-      <input type="text" placeholder="{{'input-username'| translate}}" [(ngModel)]="loginInfo.username"
-        (ngModelChange)="inputLogin()">
+    <div class="login-bg">
+        <img src="assets/svg/login/login-bg.svg">
+        <div>{{'login'|translate}}</div>
     </div>
-    <div class="item">
-      <input type="password" placeholder="{{'input-password'| translate}}" [(ngModel)]="loginInfo.password"
-        (ngModelChange)="inputLogin()">
+    <div class="login-box">
+        <div class="item">
+            <input type="text" placeholder="{{'input-username'| translate}}" [(ngModel)]="loginInfo.username" (ngModelChange)="inputLogin()">
+        </div>
+        <div class="item">
+            <input type="password" placeholder="{{'input-password'| translate}}" [(ngModel)]="loginInfo.password" (ngModelChange)="inputLogin()">
+        </div>
+        <div class="item">
+            <div class="forget-password" (click)="toForgetPassword()">{{'forget-password'|translate}}</div>
+            <div class="btn btn-ok" [ngClass]="{'btn-disabled': !canLogin}" (click)="login()">{{'login'|translate}}</div>
+        </div>
+        <div class="item">
+            <div class="register" (click)="toRegister()">{{'new-register'|translate}}</div>
+        </div>
     </div>
-    <div class="item">
-      <div class="forget-password" (click)="toForgetPassword()">{{'forget-password'|translate}}</div>
-      <div class="btn btn-ok" [ngClass]="{'btn-disabled': !canLogin}" (click)="login()">{{'login'|translate}}</div>
-    </div>
-    <div class="item">
-      <div class="register" (click)="toRegister()">{{'new-register'|translate}}</div>
-    </div>
-  </div>
 </ion-content>

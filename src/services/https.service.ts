@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from "@angular
 import { Observable, throwError } from "rxjs";
 import { retry, map, catchError } from "rxjs/operators";
 import { USER_INFO_API, ROOT_URL, MOCK_URL } from '../values/api';
-import { Jsonp, Response } from "@angular/http";
 import { NavController } from '@ionic/angular';
 /*
   Generated class for the BaseProvider provider.
@@ -26,7 +25,6 @@ export class HttpsService {
 
   constructor(
     public http: HttpClient,
-    public jsonp: Jsonp,
     public nav: NavController
   ) { }
 

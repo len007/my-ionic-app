@@ -10,15 +10,15 @@ import { AppComponent } from './app.component';
 
 import { BaseService } from '../services/base.service';
 import { HttpsService } from '../services/https.service';
-
-import { HttpModule, Http } from '@angular/http';
-import { JsonpModule } from "@angular/http";  // 引入Jsonp模块
+import { AppMinimize } from '@ionic-native/app-minimize/ngx';
 
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { Device } from '@ionic-native/device/ngx';
 import { CommonService } from '../services/common.service'; // 封装的弹窗控件
+import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx';
+
 
 export function createTranslateHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -33,8 +33,6 @@ export function createTranslateHttpLoader(http: HttpClient) {
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpModule,
-    JsonpModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -47,11 +45,13 @@ export function createTranslateHttpLoader(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
+    AndroidFullScreen,
+    AppMinimize,
     BaseService,
     HttpsService,
     CommonService,
     Device,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]
 })

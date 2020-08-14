@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Device } from '@ionic-native/device';
 
 import { BaseService } from '../../services/base.service';
 import { NavController, LoadingController } from '@ionic/angular';
@@ -8,6 +7,7 @@ import { HttpsService } from '../../services/https.service';
 
 import { USER_INFO_API } from '../../values/api';
 import { CommonService } from '../../services/common.service';
+import {  AndroidFullScreen } from '@ionic-native/android-full-screen/ngx'
 
 /**
  * Generated class for the LoginPage page.
@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
   };
   public loginToken;
   public canLogin = false;
-
+  private isFullScreen = false;
   constructor(
     public base: BaseService,
     public common: CommonService,
@@ -40,6 +40,7 @@ export class LoginPage implements OnInit {
     public translateService: TranslateService,
     public nav: NavController,
     public http: HttpsService,
+    private  fullScreen: AndroidFullScreen,
   ) { }
   ngOnInit() {  }
   inputLogin() {
@@ -54,27 +55,31 @@ export class LoginPage implements OnInit {
 
   login() {  // 提交-登录
     if (this.canLogin) {
-      this.common.presentLoading();  // 加载
       let params = {
         "username": this.loginInfo.username,
         "password": this.loginInfo.password
       }
-      this.http.post(USER_INFO_API.login, params).subscribe(res => {
-        if (res['status'] == "success") {
-          window.localStorage.setItem('userInfo', JSON.stringify(res.user));
-          window.localStorage.setItem('token', res.user['api_token']);
-          this.loading.dismiss();  // 结束加载
-          this.common.presentLoading('跳转中...',1000).then(()=>{
-            this.nav.navigateRoot('/tabs');
-          });
-        }else{
-          this.loading.dismiss();  // 结束加载
-          this.common.presentToast(res['errorMsg'],false);
-        }
-      }, errorHandler => {
-        this.loading.dismiss();  // 结束加载
-        this.common.presentToast('系统繁忙!请稍后再试',false);
+      window.localStorage.setItem('userInfo', JSON.stringify(params));
+      window.localStorage.setItem('token', 'api_token');
+      this.common.presentLoading('跳转中...',1000).then(()=>{
+        this.nav.navigateRoot('/tabs');
       });
+      // this.http.post(USER_INFO_API.login, params).subscribe(res => {
+      //   if (res['status'] == "success") {
+      //     window.localStorage.setItem('userInfo', JSON.stringify(res.user));
+      //     window.localStorage.setItem('token', res.user['api_token']);
+      //     this.loading.dismiss();  // 结束加载
+      //     this.common.presentLoading('跳转中...',1000).then(()=>{
+      //       this.nav.navigateRoot('/tabs');
+      //     });
+      //   }else{
+      //     this.loading.dismiss();  // 结束加载
+      //     this.common.presentToast(res['errorMsg'],"toast-error");
+      //   }
+      // }, errorHandler => {
+      //   this.loading.dismiss();  // 结束加载
+      //   this.common.presentToast('系统繁忙!请稍后再试',"toast-error");
+      // });
     }
     else {
       let message = "请输入正确的用户名和密码";
@@ -83,7 +88,7 @@ export class LoginPage implements OnInit {
           message = value;
         }
       });
-      this.common.presentToast(message,false);
+      this.common.presentToast(message,"toast-error");
     }
   }
   toRegister(){
@@ -91,5 +96,22 @@ export class LoginPage implements OnInit {
   }
   toForgetPassword(){
     this.nav.navigateForward('forgetpassword');
+  }
+  fullScreenClick(){
+    if(this.isFullScreen){
+      this.fullScreen.showSystemUI().then(()=>{
+        this.isFullScreen = false;
+        console.log('取消全屏');
+      }).catch(err => {
+        console.log(err)
+      });
+    }else{
+      this.fullScreen.immersiveMode().then(()=>{
+        this.isFullScreen = true;
+        console.log('全屏');
+      }).catch(err => {
+        console.log(err)
+      });
+    }
   }
 }

@@ -21,7 +21,7 @@ export class SettingPage {
       window.localStorage.removeItem('token');
       this.nav.navigateRoot("/login");
     }, () => {
-      this.common.presentToast('你点击了取消', false, 2000, "关闭", () => {
+      this.common.presentToast('你点击了取消', "toast-tip", 2000, () => {
         console.log('test');
       });
     })

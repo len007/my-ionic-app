@@ -3,6 +3,7 @@
     "shop": "商城",
     "cart": "购物车",
     "me": "我的",
+    "back": "返回",
     "login": "登录",
     "loginout": "退出登录",
     "register": "注册",
@@ -32,5 +33,7 @@
     "un-take": "待收货",
     "complete": "已完成",
     "my-order": "我的订单",
-    "submit": "提交"
+    "submit": "提交",
+    "full-screen": "全屏",
+    "un-full-screen": "取消全屏"
 }
